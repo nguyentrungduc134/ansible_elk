@@ -1,9 +1,11 @@
 # Ansible Vagrant profile for ELK (Elasticsearch, Logstash, Kibana)
+
 This solution install elk on virtualbox using vagrant and windows wsl
 vagrant up logs
 vagrant up web
+
 #Use python interperter as below, running test as root:
-  ansible-playbook -e 'ansible_python_interpreter = /usr/bin/python3.6' -b -i provisioning/elk/inventory provisioning/elk/main.yml -uroot
+ansible-playbook -e 'ansible_python_interpreter = /usr/bin/python3.6' -b -i provisioning/elk/inventory provisioning/elk/main.yml -uroot
    #remove this from vhost configration file (using default ) /etc/nginx/conf.d/kibana.conf
  /etc/nginx/proxy_params
  #some file module section not create directory: mannually fix
