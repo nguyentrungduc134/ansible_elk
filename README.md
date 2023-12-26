@@ -10,9 +10,9 @@ ansible-playbook -e 'ansible_python_interpreter = /usr/bin/python3.6' -b -i prov
 #remove this from vhost configration file (using default ) /etc/nginx/conf.d/kibana.conf
  /etc/nginx/proxy_params
 
- #some file module section not create directory: mannually fix
+ ##some file module section not create directory: mannually fix
  
- #disble plugins-codecs-multiline
+ ##disble plugins-codecs-multiline
  https://www.elastic.co/guide/en/logstash/current/plugins-codecs-multiline.html
 
 ### Setting up your hosts file
