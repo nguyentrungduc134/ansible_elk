@@ -1,0 +1,42 @@
+---
+- include: setup-RedHat.yml
+  when: ansible_os_family == 'RedHat'
+
+- include: setup-Debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Install Elasticsearch Curator via pip.
+  pip:
+    name: elasticsearch-curator
+    version: "{{ elasticsearch_curator_version | default(omit) }}"
+    executable: pip3.6
+- name: Install required dependency.
+  pip:
+    name: argparse
+
+- name: Ensure configuration directory exists.
+  file:
+    path: '{{ elasticsearch_curator_config_directory }}'
+    state: directory
+
+- name: Write curator.yml and action.yml to configuration directory.
+  copy:
+    dest: '{{ elasticsearch_curator_config_directory }}/{{ item.file }}'
+    content: '{{ item.content }}'
+  with_items:
+    - file: curator.yml
+      content: '{{ elasticsearch_curator_yaml }}'
+    - file: action.yml
+      content: '{{ elasticsearch_curator_action_yaml }}'
+
+- name: Configure cron jobs for Elasticsearch Curator.
+  cron:
+    name: "{{ item.name }}"
+    job: "{{ item.job }}"
+    state: "{{ item.state | default('present') }}"
+    minute: "{{ item.minute | default('*') }}"
+    hour: "{{ item.hour | default('*') }}"
+    day: "{{ item.day | default('*') }}"
+    weekday: "{{ item.weekday | default('*') }}"
+    month: "{{ item.month | default('*') }}"
+  with_items: "{{ elasticsearch_curator_cron_jobs }}"
