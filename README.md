@@ -18,6 +18,7 @@ ansible-playbook -e 'ansible_python_interpreter = /usr/bin/python3.6' -b -i prov
  ##disable SELINUX
  setenforce 0
 
+##Test new features and enjoy life !!!!
  ![image](https://github.com/nguyentrungduc134/ansible_elk/assets/86754554/7f125e50-6d77-441e-81e2-5827e830d925)
 
 
