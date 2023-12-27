@@ -15,6 +15,12 @@ ansible-playbook -e 'ansible_python_interpreter = /usr/bin/python3.6' -b -i prov
  ##disble plugins-codecs-multiline
  https://www.elastic.co/guide/en/logstash/current/plugins-codecs-multiline.html
 
+ ##disable SELINUX
+ setenforce 0
+
+ ![image](https://github.com/nguyentrungduc134/ansible_elk/assets/86754554/7f125e50-6d77-441e-81e2-5827e830d925)
+
+
 ### Setting up your hosts file
 
 You need to modify your host machine's hosts file (Mac/Linux: `/etc/hosts`; Windows: `%systemroot%\system32\drivers\etc\hosts`), adding the lines below:
@@ -26,6 +32,5 @@ You need to modify your host machine's hosts file (Mac/Linux: `/etc/hosts`; Wind
 
 After that is configured, you could visit http://logs.test/ in a browser, and you'll see the Kibana dashboard, and you can visit http://web.test/, and you'll see Nginx's default index page.
 
-If you'd like additional assistance editing your hosts file, please read [How do I modify my hosts file?](http://docs.rackspace.com/support/how-to/modify-your-hosts-file/) from Rackspace.
 
 
