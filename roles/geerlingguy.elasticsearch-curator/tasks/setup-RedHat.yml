@@ -1,4 +1,13 @@
 ---
+- name: Install EPEL repo
+  yum:
+   name: epel-release
+   state: present
+- name: install python-setuptools
+  package:
+   name: python-setuptools
+   state: present
+
 - name: Ensure pip is installed.
   yum:
     name: '{{ elasticsearch_curator_pip_package }}'

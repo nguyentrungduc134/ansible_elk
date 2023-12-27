@@ -5,6 +5,7 @@
 - include: setup-Debian.yml
   when: ansible_os_family == 'Debian'
 
+
 - name: Install Elasticsearch Curator via pip.
   pip:
     name: elasticsearch-curator
@@ -13,6 +14,8 @@
 - name: Install required dependency.
   pip:
     name: argparse
+    executable: pip3.6
+
 
 - name: Ensure configuration directory exists.
   file:
